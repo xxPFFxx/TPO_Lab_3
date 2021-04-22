@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertTrue;
 
 public class AuthorizationTest {
@@ -21,6 +23,8 @@ public class AuthorizationTest {
     }
 
     private void doWrongLogin(WebDriver driver){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        util.isElementPresent(driver, By.xpath("//div[@class=\"c-top-nav\"][3]//button"));
         util.prepare(driver);
         util.auth(driver, util.getCorrectLogin(), "asdasdasd");
         assertTrue(util.isElementPresent(driver, By.cssSelector("span.field-validation-error")));

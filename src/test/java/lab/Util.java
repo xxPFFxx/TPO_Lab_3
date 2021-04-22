@@ -59,7 +59,5 @@ public class Util {
         driver.findElement(By.xpath(passwordPath));
         driver.findElement(By.xpath(passwordPath)).sendKeys(password);;
         driver.findElement(By.xpath("//button[text()='Войти']")).click();
-        isElementPresent(driver, By.xpath("//div[@class=\"c-top-nav\"][3]//button"));
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 }

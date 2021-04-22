@@ -1,11 +1,16 @@
 package lab;
 
-import org.junit.*;
-import static org.junit.Assert.*;
-
-import org.openqa.selenium.*;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class SearchTest {
     private Util util;
@@ -26,6 +31,8 @@ public class SearchTest {
     private void doSuccessfulSearch(WebDriver driver){
         util.prepare(driver);
         doSearch(driver, "Nissan");
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        util.isElementPresent(driver, By.xpath("//div[@class=\"c-top-nav\"][3]//button"));
         assertFalse(util.isElementPresent(driver, By.xpath("//div[text()=\"Поиск ничего не нашёл\"]")));
         driver.quit();
     }

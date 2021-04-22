@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -29,6 +31,7 @@ public class CommunitiesTest {
         assertTrue(util.isElementPresent(driver, By.xpath("//button[text()='Пригласить']")));
         assertTrue(util.isElementPresent(driver, By.xpath("//button[text()='Покинуть']")));
         driver.get(util.getBaseUrl() + "communities/");
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         assertFalse(util.isElementPresent(driver, By.xpath("//div[@class='c-empty-content']"))); // Проверка, что список сообществ не пустой
         util.tryClick(driver, By.xpath("(//a[@class=\"c-link c-link--text\"])[1]"));
         util.tryClick(driver, By.xpath("//button[text()='Покинуть']"));
