@@ -1,6 +1,5 @@
 package lab;
 
-import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -17,14 +16,14 @@ public class SearchTest {
         driver.findElement(By.xpath("//div[@class=\"o-group o-group--xxl\"]//button")).click();
     }
 
-    private void doBadSearch(WebDriver driver){
+    private void doWrongSearch(WebDriver driver){
         util.prepare(driver);
-        doSearch(driver, "qwezxcasd");
+        doSearch(driver, "qwezxcasddhksafhas");
         assertTrue(util.isElementPresent(driver, By.xpath("//div[text()=\"Поиск ничего не нашёл\"]")));
         driver.quit();
     }
 
-    private void doGoodSearch(WebDriver driver){
+    private void doSuccessfulSearch(WebDriver driver){
         util.prepare(driver);
         doSearch(driver, "Nissan");
         assertFalse(util.isElementPresent(driver, By.xpath("//div[text()=\"Поиск ничего не нашёл\"]")));
@@ -37,14 +36,14 @@ public class SearchTest {
     }
 
     @Test
-    public void failedSearch() {
-        doBadSearch(new FirefoxDriver());
-        doBadSearch(new ChromeDriver());
+    public void wrongSearch() {
+        doWrongSearch(new FirefoxDriver());
+        doWrongSearch(new ChromeDriver());
     }
 
     @Test
     public void successfulSearch() {
-        doGoodSearch(new FirefoxDriver());
-        doGoodSearch(new ChromeDriver());
+        doSuccessfulSearch(new FirefoxDriver());
+        doSuccessfulSearch(new ChromeDriver());
     }
 }

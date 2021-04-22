@@ -2,15 +2,11 @@ package lab;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class AuthorizationTest {
@@ -18,7 +14,6 @@ public class AuthorizationTest {
 
     private void doSuccessfulLogin(WebDriver driver){
         util.prepare(driver);
-        driver.manage().timeouts().implicitlyWait(600, TimeUnit.SECONDS);
         util.auth(driver, util.getCorrectLogin(), util.getCorrectPassword());
         util.tryClick(driver, By.xpath("//div[@class=\"c-top-nav\"][3]//button")); //Нажимаем на настройки
         driver.findElement(By.xpath("//div[@class=\"c-top-dropdown\"]//button")).click(); //Нажимаем на выход
@@ -26,7 +21,6 @@ public class AuthorizationTest {
     }
 
     private void doWrongLogin(WebDriver driver){
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         util.prepare(driver);
         util.auth(driver, util.getCorrectLogin(), "asdasdasd");
         assertTrue(util.isElementPresent(driver, By.cssSelector("span.field-validation-error")));

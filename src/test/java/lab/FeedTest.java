@@ -21,6 +21,8 @@ public class FeedTest {
         util.auth(driver, util.getCorrectLogin(), util.getCorrectPassword());
         driver.get(util.getBaseUrl()+"/my/feed");
         assertTrue(util.isElementPresent(driver, By.xpath("//h1[text()=\"Лента\"]")));
+        assertTrue(util.isElementPresent(driver, By.xpath("//h3[text()=\"Рекомендуемые сообщества\"]")));
+        assertTrue(util.isElementPresent(driver, By.xpath("//h3[text()=\"Стоит почитать\"]")));
         driver.quit();
     }
 

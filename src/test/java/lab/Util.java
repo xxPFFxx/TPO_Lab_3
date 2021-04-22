@@ -1,11 +1,7 @@
 package lab;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.CacheLookup;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
@@ -28,8 +24,8 @@ public class Util {
     }
 
     public Util() {
-        System.setProperty("webdriver.gecko.driver","C:\\Users\\Daniil\\Downloads\\geckodriver-v0.29.1-win64\\geckodriver.exe");
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\Daniil\\Downloads\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.gecko.driver","src\\main\\resources\\geckodriver.exe");
+        System.setProperty("webdriver.chrome.driver","src\\main\\resources\\chromedriver.exe");
         baseUrl = "https://www.drive2.ru/";
     }
 
