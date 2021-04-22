@@ -54,6 +54,7 @@ public class Util {
     }
 
     public void auth(WebDriver driver, String login, String password){
+        driver.manage().timeouts().implicitlyWait(600, TimeUnit.SECONDS);
         String loginPath = "//input[@name='Login']";
         String passwordPath = "//input[@name='Password']";
         driver.findElement(By.xpath("//a[text()='Войти']")).click();
@@ -62,5 +63,7 @@ public class Util {
         driver.findElement(By.xpath(passwordPath));
         driver.findElement(By.xpath(passwordPath)).sendKeys(password);;
         driver.findElement(By.xpath("//button[text()='Войти']")).click();
+        isElementPresent(driver, By.xpath("//div[@class=\"c-top-nav\"][3]//button"));
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 }
