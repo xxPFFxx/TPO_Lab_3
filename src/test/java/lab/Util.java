@@ -50,8 +50,6 @@ public class Util {
     public void tryClick(WebDriver driver, By selector) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(selector));
-
-//        element.click();
         element.sendKeys(Keys.ENTER);
     }
 

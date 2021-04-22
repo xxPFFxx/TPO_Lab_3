@@ -27,8 +27,7 @@ public class SearchTest {
     private void doGoodSearch(WebDriver driver){
         util.prepare(driver);
         doSearch(driver, "Nissan");
-        boolean hasResultsBlock = util.isElementPresent(driver, By.xpath("//div[text()=\"Поиск ничего не нашёл\"]"));
-        assertFalse(hasResultsBlock);
+        assertFalse(util.isElementPresent(driver, By.xpath("//div[text()=\"Поиск ничего не нашёл\"]")));
         driver.quit();
     }
 

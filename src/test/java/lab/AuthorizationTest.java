@@ -20,8 +20,8 @@ public class AuthorizationTest {
         util.prepare(driver);
         driver.manage().timeouts().implicitlyWait(600, TimeUnit.SECONDS);
         util.auth(driver, util.getCorrectLogin(), util.getCorrectPassword());
-        util.tryClick(driver, By.xpath("//div[@class=\"c-top-nav\"][3]//button"));
-        driver.findElement(By.xpath("//div[@class=\"c-top-dropdown\"]//button")).click();
+        util.tryClick(driver, By.xpath("//div[@class=\"c-top-nav\"][3]//button")); //Нажимаем на настройки
+        driver.findElement(By.xpath("//div[@class=\"c-top-dropdown\"]//button")).click(); //Нажимаем на выход
         driver.quit();
     }
 

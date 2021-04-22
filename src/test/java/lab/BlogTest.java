@@ -24,13 +24,13 @@ public class BlogTest {
         util.prepare(driver);
         driver.manage().timeouts().implicitlyWait(600, TimeUnit.SECONDS);
         util.auth(driver, util.getCorrectLogin(), util.getCorrectPassword());
-        util.tryClick(driver, By.xpath("//a[text()='Личный блог']"));
+        util.tryClick(driver, By.xpath("//a[text()='Личный блог']")); // Переход в личный блог
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        util.tryClick(driver, By.xpath("//a[text()='Написать в блог']"));
+        util.tryClick(driver, By.xpath("//a[text()='Написать в блог']")); // Создание нового поста
         driver.findElement(By.id("jtitle")).clear();
-        driver.findElement(By.id("jtitle")).sendKeys("test");
+        driver.findElement(By.id("jtitle")).sendKeys("test"); // Тема поста
         driver.findElement(By.id("text")).clear();
-        driver.findElement(By.id("text")).sendKeys("test");
+        driver.findElement(By.id("text")).sendKeys("test"); // Содержимое поста
         util.tryClick(driver, By.xpath("//button[text()='Опубликовать запись']"));
         driver.quit();
     }
@@ -39,11 +39,11 @@ public class BlogTest {
         util.prepare(driver);
         driver.manage().timeouts().implicitlyWait(600, TimeUnit.SECONDS);
         util.auth(driver, util.getCorrectLogin(), util.getCorrectPassword());
-        util.tryClick(driver, By.xpath("//a[@class=\"c-cotd__caption c-link c-link--white c-link--nd\"]"));
+        util.tryClick(driver, By.xpath("//a[@class=\"c-cotd__caption c-link c-link--white c-link--nd\"]")); // Нажимаем на один из постов (тут Машина Дня)
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        util.tryClick(driver, By.xpath("//button[@class=\"r-button-unstyled c-bookmarks-button c-bookmarks-button--l c-bookmarks-button--inverted \"]"));
+        util.tryClick(driver, By.xpath("//button[@class=\"r-button-unstyled c-bookmarks-button c-bookmarks-button--l c-bookmarks-button--inverted \"]")); // Добавляем в закладки
         assertTrue(util.isElementPresent(driver, By.xpath("//button[contains(@class, 'c-bookmarks-button') and contains(@class, 'is-active')]")));
-        util.tryClick(driver, By.xpath("//button[contains(@class, 'c-bookmarks-button') and contains(@class, 'is-active')]"));
+        util.tryClick(driver, By.xpath("//button[contains(@class, 'c-bookmarks-button') and contains(@class, 'is-active')]")); // Удаляем из закладок
         driver.quit();
     }
 

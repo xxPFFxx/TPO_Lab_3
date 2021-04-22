@@ -17,9 +17,9 @@ public class CommunitiesTest {
 
     private void doViewCommunity(WebDriver driver){
         util.prepare(driver);
-        //util.auth(driver, util.getCorrectLogin(), util.getCorrectPassword());
+        util.auth(driver, util.getCorrectLogin(), util.getCorrectPassword());
         driver.get(util.getBaseUrl() + "communities/search");
-        util.tryClick(driver, By.xpath("(//a[@class='c-link c-link--text'])[2]"));
+        util.tryClick(driver, By.xpath("(//a[@class='c-link c-link--text'])[2]")); // Переходим по первому сообществу
         driver.quit();
     }
 
